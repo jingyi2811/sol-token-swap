@@ -1,6 +1,6 @@
 use anchor_lang::prelude::*;
 
-use crate::{charge_fee::handle_swap_fee, state::*, swap_raydium::handle_swap_raydium};
+use crate::{state::*, swap_raydium::handle_swap_raydium};
 
 pub fn handle_swap_solana(
     ctx: Context<SwapAccount>,

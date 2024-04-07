@@ -125,16 +125,6 @@ describe("icrosschainSwapSolana", () => {
 // Load the program
   const program = new anchor.Program(IDL, programId, provider);
 
-  it("Create PDA for program", async () => {
-    const programId = program.programId;
-
-    let [pda, bump] = await anchor.web3.PublicKey.findProgramAddress(
-      [Buffer.from("icrosschain")],
-      programId
-    );
-    console.log(`bump: ${bump}, pubkey: ${pda.toBase58()}`);
-  });
-
   it("Make swap only solana", async () => {
     let pda_amount_token_before = parseInt(
       (await provider.connection.getTokenAccountBalance(user_ata_ray)).value
