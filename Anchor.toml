@@ -7,7 +7,7 @@ icrosschain_swap_solana = "8AjFdB883udAJC1883po4KpgkSzyrWtL6KaTRCkzAiX9"
 url = "https://anchor.projectserum.com"
 
 [provider]
-cluster = "devnet"
+cluster = "localnet"
 #cluster = "mainnet"
 wallet = "/Users/jimmylee/.config/solana/id.json"
 

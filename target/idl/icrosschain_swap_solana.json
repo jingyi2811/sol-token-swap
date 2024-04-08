@@ -320,30 +320,6 @@
   ],
   "accounts": [
     {
-      "name": "UserProfile",
-      "type": {
-        "kind": "struct",
-        "fields": [
-          {
-            "name": "name",
-            "type": "string"
-          },
-          {
-            "name": "avatarUrl",
-            "type": "string"
-          },
-          {
-            "name": "owner",
-            "type": "publicKey"
-          },
-          {
-            "name": "status",
-            "type": "string"
-          }
-        ]
-      }
-    },
-    {
       "name": "SourceTx",
       "type": {
         "kind": "struct",

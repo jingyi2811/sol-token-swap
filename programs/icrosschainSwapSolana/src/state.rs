@@ -2,18 +2,6 @@ use anchor_lang::prelude::*;
 use anchor_spl::token::{Token, TokenAccount};
 
 #[derive(Accounts)]
-pub struct Initialize {}
-
-#[account]
-#[derive(Default)]
-pub struct UserProfile {
-    pub name: String,
-    pub avatar_url: String,
-    pub owner: Pubkey,
-    pub status: String,
-}
-
-#[derive(Accounts)]
 pub struct SwapAccount<'info> {
     /// CHECK: account checked in CPI
     pub pool_program_id: UncheckedAccount<'info>,
