@@ -118,7 +118,7 @@ describe("icrosschainSwapSolana", () => {
 
   // Load the IDL from file (or directly import it if available)
   //const idl = JSON.parse(fs.readFileSync('../target/idl/icrosschain_swap_solana.json', 'utf8'));
-  const programId = new PublicKey('8AjFdB883udAJC1883po4KpgkSzyrWtL6KaTRCkzAiX9');
+  const programId = new PublicKey('oPWcieLyDu4Fa3fdf2hGhKbAVyFUoTruesbFpV4oKJs');
 
   const IDL = require("../target/idl/icrosschain_swap_solana.json");
 
