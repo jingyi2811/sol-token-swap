@@ -1,7 +1,3 @@
-//! Raydium protocol native instructions
-//! See https://github.com/raydium-io/raydium-contract-instructions/blob/master/amm_instruction.rs
-//! for more details and accounts references
-
 use {
     crate::pack::check_data_len,
     arrayref::{array_mut_ref, mut_array_refs},
