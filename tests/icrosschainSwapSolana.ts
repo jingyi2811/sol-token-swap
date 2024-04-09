@@ -118,14 +118,14 @@ describe("icrosschainSwapSolana", () => {
 
   // Load the IDL from file (or directly import it if available)
   //const idl = JSON.parse(fs.readFileSync('../target/idl/icrosschain_swap_solana.json', 'utf8'));
-  const programId = new PublicKey('DHz1jSwTuKqeN41NAEVzmUYFmaZT7UyhG323YRyfEomT');
+  const programId = new PublicKey('J3pQMpuJShpYRv7gTQGshhC7rUu3pcXU2nn6zZKABzZU');
 
   const IDL = require("../target/idl/icrosschain_swap_solana.json");
 
 // Load the program
   const program = new anchor.Program(IDL, programId, provider);
 
-  it("Make swap only solana", async () => {
+  it("Make swap in", async () => {
     let pda_amount_token_before = parseInt(
       (await provider.connection.getTokenAccountBalance(user_ata_ray)).value
         .amount
@@ -150,7 +150,7 @@ describe("icrosschainSwapSolana", () => {
       "treasure's ray amount token before swap: ",
       treasure_ray_before
     );
-    let tx = await program.rpc.swapSolana(
+    let tx = await program.rpc.swapSolanaIn(
       new anchor.BN(100000),
       new anchor.BN(100),
       {
@@ -194,6 +194,79 @@ describe("icrosschainSwapSolana", () => {
     console.log("treasure's ray amount token after swap: ", parseInt(
       (await provider.connection.getTokenAccountBalance(treasure_ata_ray)).value
         .amount
+    ));
+    console.log("swap solana tx: ", tx);
+  });
+
+  it("Make swap out", async () => {
+    let pda_amount_token_before = parseInt(
+        (await provider.connection.getTokenAccountBalance(user_ata_ray)).value
+            .amount
+    );
+    console.log(
+        "user's ray amount token before swap: ",
+        pda_amount_token_before
+    );
+    let receive_amount_token_before = parseInt(
+        (await provider.connection.getTokenAccountBalance(user_ata_usdc)).value
+            .amount
+    );
+    console.log(
+        "user's usdc amount token before swap: ",
+        receive_amount_token_before
+    );
+    let treasure_ray_before = parseInt(
+        (await provider.connection.getTokenAccountBalance(treasure_ata_ray)).value
+            .amount
+    );
+    console.log(
+        "treasure's ray amount token before swap: ",
+        treasure_ray_before
+    );
+    let tx = await program.rpc.swapSolanaOut(
+        new anchor.BN(100000),
+        new anchor.BN(100),
+        {
+          accounts: {
+            poolProgramId: new PublicKey(POOL_PROGRAM_ID), //raydium program
+            tokenProgram: TOKEN_PROGRAM_ID, //1
+            ammId: new PublicKey(AMM_ID), //2
+            ammAuthority: new PublicKey(AMM_AUTHORITY), //3
+            ammOpenOrders: new PublicKey(AMM_OPEN_ORDERS), //4
+            atoOrMda: new PublicKey(AMM_TARGET_ORDERS), //5
+            poolCoinTokenAccount: new PublicKey(POOL_COIN_TOKEN_ACCOUNT), //6 ray
+            poolPcTokenAccount: new PublicKey(POOL_PC_TOKEN_ACCOUNT), //7 usdc
+            serumProgramId: new PublicKey(SERUM_PROGRAM_ID), //8 Serum DEX V3
+            serumMarket: new PublicKey(SERUM_MARKET),
+            serumBids: new PublicKey(SERUM_BIDS),
+            serumAsks: new PublicKey(SERUM_ASKS),
+            serumEventQueue: new PublicKey(SERUM_EVENT_QUEUE),
+
+            serumCoinVaultAccount: new PublicKey(SERUM_COIN_VAULT_ACCOUNT),
+            serumPcVaultAccount: new PublicKey(SERUM_PC_VAULT_ACCOUNT),
+            serumVaultSigner: new PublicKey(SERUM_VAULT_SIGNER),
+
+            uerSourceTokenAccount: user_ata_ray, //Ray ata source
+            uerDestinationTokenAccount: user_ata_usdc, //usdc ata destination
+            userSourceOwner: payer.publicKey,
+            treasureAta: treasure_ata_ray,
+            tokenMint: ray_mint_address,
+            pdaAddress: pda_address,
+          },
+          signers: [payer],
+        }
+    );
+    console.log("user's ray amount token after swap: ", parseInt(
+        (await provider.connection.getTokenAccountBalance(user_ata_ray)).value
+            .amount
+    ));
+    console.log("user's usdc amount token after swap: ", parseInt(
+        (await provider.connection.getTokenAccountBalance(user_ata_usdc)).value
+            .amount
+    ));
+    console.log("treasure's ray amount token after swap: ", parseInt(
+        (await provider.connection.getTokenAccountBalance(treasure_ata_ray)).value
+            .amount
     ));
     console.log("swap solana tx: ", tx);
   });

@@ -3,7 +3,7 @@
   "name": "icrosschain_swap_solana",
   "instructions": [
     {
-      "name": "swapSolana",
+      "name": "swapSolanaIn",
       "accounts": [
         {
           "name": "poolProgramId",
@@ -126,6 +126,131 @@
           "type": "u64"
         }
       ]
+    },
+    {
+      "name": "swapSolanaOut",
+      "accounts": [
+        {
+          "name": "poolProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "tokenProgram",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "ammId",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "ammAuthority",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "ammOpenOrders",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "atoOrMda",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolCoinTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "poolPcTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumProgramId",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "serumMarket",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumBids",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumAsks",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumEventQueue",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumCoinVaultAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumPcVaultAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "serumVaultSigner",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "uerSourceTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "uerDestinationTokenAccount",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "userSourceOwner",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "treasureAta",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "tokenMint",
+          "isMut": false,
+          "isSigner": false
+        },
+        {
+          "name": "pdaAddress",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": [
+        {
+          "name": "maximumAmountIn",
+          "type": "u64"
+        },
+        {
+          "name": "amountOut",
+          "type": "u64"
+        }
+      ]
     }
   ],
   "accounts": [
@@ -167,6 +292,6 @@
     }
   ],
   "metadata": {
-    "address": "DHz1jSwTuKqeN41NAEVzmUYFmaZT7UyhG323YRyfEomT"
+    "address": "J3pQMpuJShpYRv7gTQGshhC7rUu3pcXU2nn6zZKABzZU"
   }
 }
