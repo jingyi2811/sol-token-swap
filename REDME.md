@@ -1,11 +1,11 @@
--- solana logs
--- solana-test-validator -r
-
-rm -r node_modules
 rm -r target
-
-nvm use 16
-yarn install
-
 anchor build
+anchor deploy
+
+change id in test and lib
+
+anchor clean
+anchor build
+anchor deploy
+
 anchor run test
