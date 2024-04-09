@@ -118,7 +118,7 @@ describe("icrosschainSwapSolana", () => {
 
   // Load the IDL from file (or directly import it if available)
   //const idl = JSON.parse(fs.readFileSync('../target/idl/icrosschain_swap_solana.json', 'utf8'));
-  const programId = new PublicKey('oPWcieLyDu4Fa3fdf2hGhKbAVyFUoTruesbFpV4oKJs');
+  const programId = new PublicKey('DHz1jSwTuKqeN41NAEVzmUYFmaZT7UyhG323YRyfEomT');
 
   const IDL = require("../target/idl/icrosschain_swap_solana.json");
 
@@ -153,7 +153,6 @@ describe("icrosschainSwapSolana", () => {
     let tx = await program.rpc.swapSolana(
       new anchor.BN(100000),
       new anchor.BN(100),
-      new anchor.BN(4),
       {
         accounts: {
           poolProgramId: new PublicKey(POOL_PROGRAM_ID), //raydium program
@@ -198,74 +197,4 @@ describe("icrosschainSwapSolana", () => {
     ));
     console.log("swap solana tx: ", tx);
   });
-
-  //   it("make swap to solana !", async () => {
-  //     let pda_amount_token_before = parseInt(
-  //       (await provider.connection.getTokenAccountBalance(pda_ata_usdc)).value
-  //         .amount
-  //     );
-  //     console.log("pda usdc amount token before swap: ", pda_amount_token_before);
-  //     let receive_amount_token_before = parseInt(
-  //       (await provider.connection.getTokenAccountBalance(user_ata_ray)).value
-  //         .amount
-  //     );
-  //     console.log(
-  //       "user's ray amount token before swap: ",
-  //       receive_amount_token_before
-  //     );
-  //     let tx = await program.rpc.swapToSolana(
-  //       new anchor.BN(10000),
-  //       new anchor.BN(100),
-  //       new anchor.BN(4),
-  //       "0x08a3a897783784dd5c727d78dd3fc938782fc7f99263c3adc087f1c7e34f1d54",
-  //       {
-  //         fromAddress: "0x",
-  //         toAddress: "0xt",
-  //         txHash: "0xxxxxx1",
-  //       },
-  //       {
-  //         accounts: {
-  //           poolProgramId: new PublicKey(POOL_PROGRAM_ID), //raydium program
-  //           tokenProgram: TOKEN_PROGRAM_ID, //1
-  //           ammId: new PublicKey(AMM_ID), //2
-  //           ammAuthority: new PublicKey(AMM_AUTHORITY), //3
-  //           ammOpenOrders: new PublicKey(AMM_OPEN_ORDERS), //4
-  //           atoOrMda: new PublicKey(AMM_TARGET_ORDERS), //5
-  //           poolCoinTokenAccount: new PublicKey(POOL_COIN_TOKEN_ACCOUNT), //6 ray
-  //           poolPcTokenAccount: new PublicKey(POOL_PC_TOKEN_ACCOUNT), //7 usdc
-  //           serumProgramId: new PublicKey(SERUM_PROGRAM_ID), //8 Serum DEX V3
-  //           serumMarket: new PublicKey(SERUM_MARKET),
-  //           serumBids: new PublicKey(SERUM_BIDS),
-  //           serumAsks: new PublicKey(SERUM_ASKS),
-  //           serumEventQueue: new PublicKey(SERUM_EVENT_QUEUE),
-
-  //           serumCoinVaultAccount: new PublicKey(SERUM_COIN_VAULT_ACCOUNT),
-  //           serumPcVaultAccount: new PublicKey(SERUM_PC_VAULT_ACCOUNT),
-  //           serumVaultSigner: new PublicKey(SERUM_VAULT_SIGNER),
-
-  //           uerSourceTokenAccount: pda_ata_usdc, //user ray
-  //           uerDestinationTokenAccount: user_ata_ray, //pda usdc
-  //           userSourceOwner: pda_address,
-  //           author: wallet.publicKey,
-  //           sourceTx: source_tx_account,
-  //         },
-  //         signers: [wallet],
-  //       }
-  //     );
-  //     let pda_amount_token = parseInt(
-  //       (await provider.connection.getTokenAccountBalance(pda_ata_usdc)).value
-  //         .amount
-  //     );
-  //     console.log("pda's usdc amount token after swap: ", pda_amount_token);
-  //     let receive_amount_token = parseInt(
-  //       (await provider.connection.getTokenAccountBalance(user_ata_ray)).value
-  //         .amount
-  //     );
-  //     console.log("user's ray amount token after swap: ", receive_amount_token);
-  //     const updatedTweetAccount = await program.account.sourceTx.fetch(
-  //       source_tx_account
-  //     );
-  //     console.log("account", updatedTweetAccount);
-  //     console.log("swap to solana tx: ", tx);
-  //   });
 });

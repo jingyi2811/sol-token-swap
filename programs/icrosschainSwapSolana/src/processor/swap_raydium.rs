@@ -10,8 +10,7 @@ use solana_program::{
 pub fn handle_swap_raydium(
     ctx: &Context<SwapAccount>,
     amount_in: u64,
-    minimum_amount_out: u64,
-    version: u8,
+    minimum_amount_out: u64
 ) -> Result<()> {
     let pool_program_id = ctx.accounts.pool_program_id.to_account_info();
     let ray_program_id = ctx.accounts.token_program.to_account_info();
@@ -33,92 +32,48 @@ pub fn handle_swap_raydium(
     let uer_destination_token_account =
         ctx.accounts.uer_destination_token_account.to_account_info();
     let user_source_owner = ctx.accounts.user_source_owner.to_account_info();
-    let accounts;
     let raydium_accounts;
 
-    if version == 4 {
-        accounts = [
-            amm_id.clone(),
-            amm_authority.clone(),
-            amm_open_orders.clone(),
-            ato_or_mda.clone(),
-            pool_coin_token_account.clone(),
-            pool_pc_token_account.clone(),
-            serum_program_id.clone(),
-            serum_market.clone(),
-            serum_bids.clone(),
-            serum_asks.clone(),
-            serum_event_queue.clone(),
-            serum_coin_vault_account.clone(),
-            serum_pc_vault_account.clone(),
-            serum_vault_signer.clone(),
-            uer_source_token_account.clone(),
-            uer_destination_token_account.clone(),
-            user_source_owner.clone(),
-            ray_program_id.clone(),
-        ];
-        raydium_accounts = vec![
-            AccountMeta::new_readonly(*ray_program_id.key, false),
-            AccountMeta::new(*amm_id.key, false),
-            AccountMeta::new_readonly(*amm_authority.key, false),
-            AccountMeta::new(*amm_open_orders.key, false),
-            AccountMeta::new(*ato_or_mda.key, false), // amm_target
-            AccountMeta::new(*pool_coin_token_account.key, false),
-            AccountMeta::new(*pool_pc_token_account.key, false),
-            AccountMeta::new_readonly(*serum_program_id.key, false),
-            AccountMeta::new(*serum_market.key, false),
-            AccountMeta::new(*serum_bids.key, false),
-            AccountMeta::new(*serum_asks.key, false),
-            AccountMeta::new(*serum_event_queue.key, false),
-            AccountMeta::new(*serum_coin_vault_account.key, false),
-            AccountMeta::new(*serum_pc_vault_account.key, false),
-            AccountMeta::new_readonly(*serum_vault_signer.key, false),
-            AccountMeta::new(*uer_source_token_account.key, false),
-            AccountMeta::new(*uer_destination_token_account.key, false),
-            AccountMeta::new_readonly(*user_source_owner.key, true),
-        ];
-    } else {
-        accounts = [
-            amm_id.clone(),
-            amm_authority.clone(),
-            amm_open_orders.clone(),
-            pool_coin_token_account.clone(),
-            pool_pc_token_account.clone(),
-            ato_or_mda.clone(),
-            serum_program_id.clone(),
-            serum_market.clone(),
-            serum_bids.clone(),
-            serum_asks.clone(),
-            serum_event_queue.clone(),
-            serum_coin_vault_account.clone(),
-            serum_pc_vault_account.clone(),
-            serum_vault_signer.clone(),
-            uer_source_token_account.clone(),
-            uer_destination_token_account.clone(),
-            user_source_owner.clone(),
-            ray_program_id.clone(),
-        ];
-        raydium_accounts = vec![
-            AccountMeta::new_readonly(*ray_program_id.key, false),
-            AccountMeta::new(*amm_id.key, false),
-            AccountMeta::new_readonly(*amm_authority.key, false),
-            AccountMeta::new(*amm_open_orders.key, false),
-            AccountMeta::new(*pool_coin_token_account.key, false),
-            AccountMeta::new(*pool_pc_token_account.key, false),
-            AccountMeta::new(*ato_or_mda.key, false), // amm_target
-            AccountMeta::new_readonly(*serum_program_id.key, false),
-            AccountMeta::new(*serum_market.key, false),
-            AccountMeta::new(*serum_bids.key, false),
-            AccountMeta::new(*serum_asks.key, false),
-            AccountMeta::new(*serum_event_queue.key, false),
-            AccountMeta::new(*serum_coin_vault_account.key, false),
-            AccountMeta::new(*serum_pc_vault_account.key, false),
-            AccountMeta::new_readonly(*serum_vault_signer.key, false),
-            AccountMeta::new(*uer_source_token_account.key, false),
-            AccountMeta::new(*uer_destination_token_account.key, false),
-            AccountMeta::new_readonly(*user_source_owner.key, true),
-        ];
-    }
+    let  accounts = [
+        amm_id.clone(),
+        amm_authority.clone(),
+        amm_open_orders.clone(),
+        ato_or_mda.clone(),
+        pool_coin_token_account.clone(),
+        pool_pc_token_account.clone(),
+        serum_program_id.clone(),
+        serum_market.clone(),
+        serum_bids.clone(),
+        serum_asks.clone(),
+        serum_event_queue.clone(),
+        serum_coin_vault_account.clone(),
+        serum_pc_vault_account.clone(),
+        serum_vault_signer.clone(),
+        uer_source_token_account.clone(),
+        uer_destination_token_account.clone(),
+        user_source_owner.clone(),
+        ray_program_id.clone(),
+    ];
+    raydium_accounts = vec![
+        AccountMeta::new_readonly(*ray_program_id.key, false),
+        AccountMeta::new(*amm_id.key, false),
+        AccountMeta::new_readonly(*amm_authority.key, false),
+        AccountMeta::new(*amm_open_orders.key, false),
+        AccountMeta::new(*ato_or_mda.key, false), // amm_target
+        AccountMeta::new(*pool_coin_token_account.key, false),
+        AccountMeta::new(*pool_pc_token_account.key, false),
+        AccountMeta::new_readonly(*serum_program_id.key, false),
+        AccountMeta::new(*serum_market.key, false),
+        AccountMeta::new(*serum_bids.key, false),
+        AccountMeta::new(*serum_asks.key, false),
+        AccountMeta::new(*serum_event_queue.key, false),
+        AccountMeta::new(*serum_coin_vault_account.key, false),
+        AccountMeta::new(*serum_pc_vault_account.key, false),
+        AccountMeta::new_readonly(*serum_vault_signer.key, false),
+        AccountMeta::new(*uer_source_token_account.key, false),
+        AccountMeta::new(*uer_destination_token_account.key, false),
+        AccountMeta::new_readonly(*user_source_owner.key, true),
+    ];
 
     let instruction = Instruction {
         program_id: *pool_program_id.key,

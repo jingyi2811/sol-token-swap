@@ -124,10 +124,6 @@
         {
           "name": "minimumAmountOut",
           "type": "u64"
-        },
-        {
-          "name": "version",
-          "type": "u8"
         }
       ]
     }
@@ -170,69 +166,7 @@
       }
     }
   ],
-  "errors": [
-    {
-      "code": 6000,
-      "name": "Uninitialized",
-      "msg": "Account is not initialized!"
-    },
-    {
-      "code": 6001,
-      "name": "IncorrectOwner",
-      "msg": "Account does not have correct owner!"
-    },
-    {
-      "code": 6002,
-      "name": "TokenTransferFailed",
-      "msg": "Token transfer failed"
-    },
-    {
-      "code": 6003,
-      "name": "DerivedKeyInvalid",
-      "msg": "Derived key invalid"
-    },
-    {
-      "code": 6004,
-      "name": "PublicKeyMismatch",
-      "msg": "Public key mismatch"
-    },
-    {
-      "code": 6005,
-      "name": "DestinationInvalid",
-      "msg": "Destination key invalid"
-    },
-    {
-      "code": 6006,
-      "name": "SignerInvalid",
-      "msg": "Signer key invalid"
-    },
-    {
-      "code": 6007,
-      "name": "OverMaxAmount",
-      "msg": "Can not swap over 5000 usdc"
-    },
-    {
-      "code": 6008,
-      "name": "BelowMinAmout",
-      "msg": "Can not swap below 5 usdc"
-    },
-    {
-      "code": 6009,
-      "name": "TreasureInvalid",
-      "msg": "Treasure address is invalid"
-    },
-    {
-      "code": 6010,
-      "name": "DuplicateSourceTx",
-      "msg": "Duplicate Source tx hash"
-    },
-    {
-      "code": 6011,
-      "name": "ExpiredTx",
-      "msg": "Expired transaction"
-    }
-  ],
   "metadata": {
-    "address": "oPWcieLyDu4Fa3fdf2hGhKbAVyFUoTruesbFpV4oKJs"
+    "address": "DHz1jSwTuKqeN41NAEVzmUYFmaZT7UyhG323YRyfEomT"
   }
 }

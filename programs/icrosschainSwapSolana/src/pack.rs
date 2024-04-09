@@ -2,13 +2,12 @@
 
 use {
     crate::string::ArrayString64,
-    arrayref::{array_refs, mut_array_refs},
     serde::{
         de::{Error, Visitor},
-        Deserialize, Deserializer, Serializer,
+        Deserializer,
     },
-    solana_program::{program_error::ProgramError, pubkey::Pubkey},
-    std::{fmt, str::FromStr},
+    solana_program::{program_error::ProgramError},
+    std::fmt,
 };
 
 /// Checks if the slice has at least min_len size
