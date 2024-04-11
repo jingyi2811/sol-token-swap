@@ -99,21 +99,6 @@
           "name": "userSourceOwner",
           "isMut": true,
           "isSigner": true
-        },
-        {
-          "name": "treasureAta",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "tokenMint",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "pdaAddress",
-          "isMut": false,
-          "isSigner": false
         }
       ],
       "args": [
@@ -224,21 +209,6 @@
           "name": "userSourceOwner",
           "isMut": true,
           "isSigner": true
-        },
-        {
-          "name": "treasureAta",
-          "isMut": true,
-          "isSigner": false
-        },
-        {
-          "name": "tokenMint",
-          "isMut": false,
-          "isSigner": false
-        },
-        {
-          "name": "pdaAddress",
-          "isMut": false,
-          "isSigner": false
         }
       ],
       "args": [
@@ -292,6 +262,6 @@
     }
   ],
   "metadata": {
-    "address": "J3pQMpuJShpYRv7gTQGshhC7rUu3pcXU2nn6zZKABzZU"
+    "address": "E6Ty7PkQvuQuBFSQJzNgQysJUezpEU5uhez7Skt3Ld94"
   }
 }

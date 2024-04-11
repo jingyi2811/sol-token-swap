@@ -118,7 +118,7 @@ describe("icrosschainSwapSolana", () => {
 
   // Load the IDL from file (or directly import it if available)
   //const idl = JSON.parse(fs.readFileSync('../target/idl/icrosschain_swap_solana.json', 'utf8'));
-  const programId = new PublicKey('J3pQMpuJShpYRv7gTQGshhC7rUu3pcXU2nn6zZKABzZU');
+  const programId = new PublicKey('E6Ty7PkQvuQuBFSQJzNgQysJUezpEU5uhez7Skt3Ld94');
 
   const IDL = require("../target/idl/icrosschain_swap_solana.json");
 
@@ -175,10 +175,7 @@ describe("icrosschainSwapSolana", () => {
 
           uerSourceTokenAccount: user_ata_ray, //Ray ata source
           uerDestinationTokenAccount: user_ata_usdc, //usdc ata destination
-          userSourceOwner: payer.publicKey,
-          treasureAta: treasure_ata_ray,
-          tokenMint: ray_mint_address,
-          pdaAddress: pda_address,
+          userSourceOwner: payer.publicKey
         },
         signers: [payer],
       }
@@ -249,9 +246,6 @@ describe("icrosschainSwapSolana", () => {
             uerSourceTokenAccount: user_ata_ray, //Ray ata source
             uerDestinationTokenAccount: user_ata_usdc, //usdc ata destination
             userSourceOwner: payer.publicKey,
-            treasureAta: treasure_ata_ray,
-            tokenMint: ray_mint_address,
-            pdaAddress: pda_address,
           },
           signers: [payer],
         }

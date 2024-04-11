@@ -10,7 +10,7 @@ pub use pack::*;
 pub use processor::*;
 pub use state::*;
 
-declare_id!("J3pQMpuJShpYRv7gTQGshhC7rUu3pcXU2nn6zZKABzZU");
+declare_id!("E6Ty7PkQvuQuBFSQJzNgQysJUezpEU5uhez7Skt3Ld94");
 
 #[program]
 pub mod icrosschain_swap_solana {
